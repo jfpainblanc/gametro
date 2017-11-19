@@ -1,0 +1,194 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://anime_balle_gravite.gd" type="Script" id=1]
+[ext_resource path="res://assets/bkg_sky.jpg" type="Texture" id=2]
+[ext_resource path="res://balle_souris.gd" type="Script" id=3]
+[ext_resource path="res://assets/balle.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=4]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 65, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 23.6272 )
+
+[node name="Node2D" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="bkg_sky" type="Sprite" parent="."]
+
+transform/pos = Vector2( 960, 150 )
+texture = ExtResource( 2 )
+
+[node name="score" type="Label" parent="."]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 40.0
+margin/top = 20.0
+margin/right = 290.0
+margin/bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ball" type="RigidBody2D" parent="."]
+
+transform/pos = Vector2( 310, 110 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 3.46154, 0, 0, 3.46154, -29, -22 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 2.04082
+friction = 1.0
+bounce = 1.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+script/script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="ball"]
+
+transform/pos = Vector2( -29.0565, -21.5579 )
+transform/scale = Vector2( 0.113346, 0.115175 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball"]
+
+transform/pos = Vector2( -29, -22 )
+transform/scale = Vector2( 3.46154, 3.46154 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="murBas" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 350, 340 )
+transform/scale = Vector2( 10.3125, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1.42647, 0, 0, 1, 60, 400 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColmurBas" type="CollisionShape2D" parent="murBas"]
+
+transform/pos = Vector2( 60, 400 )
+transform/scale = Vector2( 1.42647, 1 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="murHaut" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 480, -1020 )
+transform/scale = Vector2( 15, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 31, 400 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColmurHaut" type="CollisionShape2D" parent="murHaut"]
+
+transform/pos = Vector2( 31, 400 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="murGauche" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 20, 60 )
+transform/scale = Vector2( 1, 22.6562 )
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1.25222, 0, 0.856447 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColmurGauche" type="CollisionShape2D" parent="murGauche"]
+
+transform/pos = Vector2( 0, 0.856447 )
+transform/scale = Vector2( 1, 1.25222 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="murDroite" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 1910, 40 )
+transform/scale = Vector2( 1, 22.6562 )
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1.25222, 0, 0.856447 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColmurDroite" type="CollisionShape2D" parent="murDroite"]
+
+transform/pos = Vector2( 0, 0.856447 )
+transform/scale = Vector2( 1, 1.25222 )
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+
